@@ -2,9 +2,16 @@ import gradio as gr
 import torch
 import logging
 from diffusers import DiffusionPipeline
+
 modelid = "CompVis/stable-diffusion-v1-4"
 
 def get_device():
+    """
+    Get the device to be used for computation.
+
+    Returns:
+        str: The device name.
+    """
     switch_cases = {
         "mps": torch.backends.mps.is_available(),
         "cuda": torch.cuda.is_available(),
@@ -30,13 +37,23 @@ if device.type == "mps":
 
 seed = 1330
 
-def generate(text,text_neg):
-        if device.type == "mps":
-            generator = torch.manual_seed(seed)
-        else:
-            generator = torch.Generator(device).manual_seed(seed)
-        image = pipe(prompt=text,guidance_scale=8.5,negative_prompt=text_neg,generator=generator).images[0]
-        return image
+def generate(text, text_neg):
+    """
+    Generates an image based on the given text and negative text.
+
+    Args:
+        text (str): The main text prompt for generating the image.
+        text_neg (str): The negative text prompt for generating the image.
+
+    Returns:
+        PIL.Image.Image: The generated image.
+    """
+    if device.type == "mps":
+        generator = torch.manual_seed(seed)
+    else:
+        generator = torch.Generator(device).manual_seed(seed)
+    image = pipe(prompt=text, guidance_scale=8.5, negative_prompt=text_neg, generator=generator).images[0]
+    return image
 
 with gr.Blocks() as demo:
     image_output = gr.Image(label="Output Image",width=512, height=512)
