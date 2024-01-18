@@ -23,7 +23,8 @@ This will start the Gradio interface, allowing you to input text and generate im
 
 Once you've executed the code and the Gradio interface is running, follow these steps:
 
-1. **Input your positive prompt**: Use the Gradio interface to enter a textual description of the image you want to generate. You can also adjust other parameters like model selection, number of images to 
+1. **Input your positive prompt**: Use the Gradio interface to enter a textual description of the image you want to generate.
+
 2. **Input your negative prompt**: Use the Gradio interface to enter a textual description for negative prompt. This parameter should be a string containing a textual description of what you want to exclude or avoid in the generated image. The model will then take this into account during the generation process.
 
 3. **Generate image**: After entering your desired input, click on the "Generate" button to start generating images based on your text description. The process may take some time depending on the 
