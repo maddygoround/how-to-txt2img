@@ -3,7 +3,7 @@ import torch
 import logging
 from diffusers import DiffusionPipeline
 
-modelid = "CompVis/stable-diffusion-v1-4"
+modelid = "dreamlike-art/dreamlike-diffusion-1.0"
 
 def get_device():
     """

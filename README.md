@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ```
 2. **Run the code**: After setting up everything, you can run the script by executing the following command:
 ```bash
-python app.py
+python txt2image-base.py
 ```
 This will start the Gradio interface, allowing you to input text and generate images using stable diffusion.
 
