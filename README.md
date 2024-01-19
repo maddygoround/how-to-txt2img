@@ -1,4 +1,5 @@
 # Getting Started with Stable Diffusion: Txt2Img Example
+[<img src="output.png" width="250"/>](output.png)
 
 ## Introduction
 

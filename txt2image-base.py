@@ -1,6 +1,7 @@
 import gradio as gr
 import torch
 import logging
+from torch import autocast
 from diffusers import DiffusionPipeline
 
 modelid = "dreamlike-art/dreamlike-diffusion-1.0"
@@ -52,7 +53,8 @@ def generate(text, text_neg):
         generator = torch.manual_seed(seed)
     else:
         generator = torch.Generator(device).manual_seed(seed)
-    image = pipe(prompt=text, guidance_scale=8.5, negative_prompt=text_neg, generator=generator).images[0]
+    with autocast(device_type=device.type, enabled=de):
+        image = pipe(prompt=text, guidance_scale=8.5, negative_prompt=text_neg, generator=generator).images[0]
     return image
 
 with gr.Blocks() as demo:
